@@ -61,7 +61,7 @@
         <option value="dzone.brushes.squiggly">Squiggly</option>
       </select></div>
       <div>Color: <input type="color" id="color" value="#222222"></div>
-      <div><button id="invert">Invert Colors</button></div>
+      <div><button id="invert">Invert Colors</button><button id="gray">Avg. Grayscale</button></div>
       <div>
         Config:<br/>
         <textarea id="options"></textarea>
@@ -99,7 +99,9 @@
       dzone.brush.o = JSON.parse(options.value);
     };
     options.value = JSON.stringify(dzone.brush.o);
+
     document.querySelector("#invert").onclick = dzone.invert;
+    document.querySelector("#gray").onclick = dzone.gray;
     </script>
   </body>
 </html>

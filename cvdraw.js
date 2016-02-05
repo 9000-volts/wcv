@@ -172,6 +172,17 @@ var cvdraw = function (container, width, height) {
     t.c.putImageData(id, 0, 0);
   };
 
+  t.gray = function () {
+    var id = t.c.getImageData(0, 0, t.w, t.h);
+    for (var i = 0; i < t.w * t.h * 4; i += 4) {
+      var n = Math.floor((id.data[i] + id.data[i + 1] + id.data[i + 2]) / 3);
+      id.data[i] = n;
+      id.data[i + 1] = n;
+      id.data[i + 2] = n;
+    }
+    t.c.putImageData(id, 0, 0);
+  };
+
   // Keep track of the mouse status across the whole page.
   window.addEventListener("mousedown", function (e) {
     t.down = 1;

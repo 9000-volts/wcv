@@ -93,11 +93,27 @@ var cvdraw = function (container, width, height) {
     dots: {
       stroke: function () {
         t.c.beginPath();
-        t.c.moveTo(t.coords[0].x, t.coords[0].y);
         t.c.fillStyle = t.color;
         var o = this.o;
         t.coords.forEach(function(coord) {
           t.c.fillRect(Math.floor(coord.x - (o.size / 2)), Math.floor(coord.y - (o.size / 2)), o.size, o.size);
+        });
+      },
+      o: {
+        size: 1
+      }
+    },
+    fade: {
+      stroke: function () {
+        t.c.beginPath();
+        t.c.moveTo(t.coords[0].x, t.coords[0].y);
+        t.c.strokeStyle = t.color;
+        t.c.lineCap = "round";
+        t.c.lineWidth = this.o.size / 10;
+        var o = this.o;
+        t.coords.forEach(function(coord) {
+          t.c.lineTo(coord.x, coord.y);
+          t.c.stroke();
         });
         t.c.stroke();
       },

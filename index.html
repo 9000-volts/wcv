@@ -18,19 +18,14 @@
     #dzone {
       border: 1px solid #222;
       width: 700px;
-      height: 500px;
+      height: 550px;
       margin: 1em auto;
-    }
-    #about {
-      margin: 0 auto;
-      width: 700px;
     }
     #left, #right {
       position: fixed;
       top: 3em;
       border: 1px solid #222;
       width: calc((100vw - 9em - 700px) / 2);
-      height: 100px;
       padding: 1em;
     }
     #left {
@@ -63,20 +58,16 @@
       <div>Color: <input type="color" id="color" value="#222222"></div>
     </div>
     <div id="right">
-    </div>
-    <div id="about">
-      <b>cvdraw</b> is an extensible web painting module.<br/>
-      <b>wcv</b>, this site, is a painting program based off of cvdraw.<br/>
-      It adds an interface that allows you to control the brushes properly,
-      as well as other neat things like <code>^Z</code> and <code>^Y</code>
-      keycombo support.<br/>
+      <b>wcv</b> is a very simple painting program!<br/><br/>
       This was coded by <a href="http://9kv.cu.cc">9000 volts</a> as a quick
-      project.<br/>
+      project.<br/><br/>
       <b>THIS IS AN EXPERIMENT</b> AND IS NOT INTENDED AS AN ALTERNATIVE TO
-      PROPER DRAWING TOOLS!
+      PROPER DRAWING TOOLS!<br/><br/>
+      This project is divided into two parts, <b>wcv</b> (this GUI and page) and
+      <b>cvdraw</b> (the canvas/drawing code).
     </div>
     <script>
-    var dzone = cvdraw(document.querySelector("#dzone"), 700, 500);
+    var dzone = cvdraw(document.querySelector("#dzone"), 700, 550);
     window.addEventListener("keydown", function (e) {
       if (e.keyCode === 90 && e.ctrlKey) {
         dzone.undo();

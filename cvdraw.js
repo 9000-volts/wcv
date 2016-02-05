@@ -170,5 +170,5 @@ var cvdraw = function (container, width, height) {
   });
   window.addEventListener("mousemove", t.mouseMove);
 
-  t.useBrush(t.brushes.dots);
+  t.useBrush(t.brushes.line);
 };

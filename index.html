@@ -25,10 +25,45 @@
       margin: 0 auto;
       width: 700px;
     }
+    #left, #right {
+      position: fixed;
+      top: 3em;
+      border: 1px solid #222;
+      width: calc((100vw - 9em - 700px) / 2);
+      height: 100px;
+      padding: 1em;
+    }
+    #left {
+      left: 3em;
+    }
+    #right {
+      right: 3em;
+    }
+    input, select {
+      width: 70%;
+      margin: 0;
+      padding: 0.5em;
+    }
+    input[type=color] {
+      padding: 0;
+      border: 1px solid #222;
+      background: 0;
+    }
     </style>
   </head>
   <body>
     <div id="dzone"></div>
+    <div id="left">
+      <div>Brush:
+      <select id="brush">
+        <option value="dzone.brushes.line">Line</option>
+        <option value="dzone.brushes.dots">Dots</option>
+        <option value="dzone.brushes.squiggly">Squiggly</option>
+      </select></div>
+      <div>Color: <input type="color" id="color" value="#222222"></div>
+    </div>
+    <div id="right">
+    </div>
     <div id="about">
       <b>cvdraw</b> is an extensible web painting module.<br/>
       <b>wcv</b>, this site, is a painting program based off of cvdraw.<br/>
@@ -36,7 +71,9 @@
       as well as other neat things like <code>^Z</code> and <code>^Y</code>
       keycombo support.<br/>
       This was coded by <a href="http://9kv.cu.cc">9000 volts</a> as a quick
-      project.
+      project.<br/>
+      <b>THIS IS AN EXPERIMENT</b> AND IS NOT INTENDED AS AN ALTERNATIVE TO
+      PROPER DRAWING TOOLS!
     </div>
     <script>
     var dzone = cvdraw(document.querySelector("#dzone"), 700, 500);
@@ -46,6 +83,14 @@
         e.preventDefault();
       }
     });
+    var color = document.querySelector("#color");
+    color.onchange = function () {
+      dzone.color = color.value;
+    };
+    var brush = document.querySelector("#brush");
+    brush.onchange = function () {
+      dzone.useBrush(eval(brush.value));
+    };
     </script>
   </body>
 </html>

@@ -35,6 +35,8 @@ var cvdraw = function (container, width, height) {
   var cmain = makeCanvas();
   t.cv = cmain.cv;
   t.c = cmain.c;
+  t.c.fillStyle = "#fff";
+  t.c.fillRect(0, 0, t.w, t.h);
 
   // Preview canvas and context.
   var cpreview = makeCanvas();
@@ -158,6 +160,16 @@ var cvdraw = function (container, width, height) {
       t.coords.push(p);
       t.p.stroke();
     } else t.finalizeStroke();
+  };
+
+  t.invert = function () {
+    var id = t.c.getImageData(0, 0, t.w, t.h);
+    for (var i = 0; i < t.w * t.h * 4; i += 4) {
+      id.data[i] = 255 - id.data[i];
+      id.data[i + 1] = 255 - id.data[i + 1];
+      id.data[i + 2] = 255 - id.data[i + 2];
+    }
+    t.c.putImageData(id, 0, 0);
   };
 
   // Keep track of the mouse status across the whole page.

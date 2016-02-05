@@ -17,8 +17,8 @@
     }
     #dzone {
       border: 1px solid #222;
-      width: 700px;
-      height: 550px;
+      width: 702px;
+      height: 552px;
       margin: 1em auto;
     }
     #left, #right {
@@ -61,6 +61,7 @@
         <option value="dzone.brushes.squiggly">Squiggly</option>
       </select></div>
       <div>Color: <input type="color" id="color" value="#222222"></div>
+      <div><button id="invert">Invert Colors</button></div>
       <div>
         Config:<br/>
         <textarea id="options"></textarea>
@@ -98,6 +99,7 @@
       dzone.brush.o = JSON.parse(options.value);
     };
     options.value = JSON.stringify(dzone.brush.o);
+    document.querySelector("#invert").onclick = dzone.invert;
     </script>
   </body>
 </html>

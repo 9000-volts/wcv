@@ -25,19 +25,24 @@
       position: fixed;
       top: 3em;
       border: 1px solid #222;
-      width: calc((100vw - 9em - 700px) / 2);
+      width: calc((100vw - 4em - 700px) / 2);
       padding: 1em;
     }
     #left {
-      left: 3em;
+      left: 1em;
     }
     #right {
-      right: 3em;
+      right: 1em;
     }
     input, select {
       width: 70%;
       margin: 0;
       padding: 0.5em;
+    }
+    textarea {
+      width: 100%;
+      min-height: 300px;
+      resize: vertical;
     }
     input[type=color] {
       padding: 0;
@@ -56,6 +61,10 @@
         <option value="dzone.brushes.squiggly">Squiggly</option>
       </select></div>
       <div>Color: <input type="color" id="color" value="#222222"></div>
+      <div>
+        Config:<br/>
+        <textarea id="options"></textarea>
+      </div>
     </div>
     <div id="right">
       <b>wcv</b> is a very simple painting program!<br/><br/>
@@ -79,9 +88,15 @@
       dzone.color = color.value;
     };
     var brush = document.querySelector("#brush");
+    var options = document.querySelector("#options");
     brush.onchange = function () {
       dzone.useBrush(eval(brush.value));
+      options.value = JSON.stringify(dzone.brush.o);
     };
+    options.onchange = function () {
+      dzone.brush.o = JSON.parse(options.value);
+    };
+    options.value = JSON.stringify(dzone.brush.o);
     </script>
   </body>
 </html>

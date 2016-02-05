@@ -61,13 +61,14 @@ var cvdraw = function (container, width, height) {
         var o = this.o;
         t.coords.forEach(function(coord) {
           t.c.quadraticCurveTo(control.x, control.y, coord.x, coord.y);
-          control = {x: coord.x + o.squiggle, y: coord.y + o.squiggle};
+          control = {x: coord.x + o.squiggleX, y: coord.y + o.squiggleY};
         });
         t.c.stroke();
       },
       o: {
         size: 3,
-        squiggle: 10
+        squiggleX: 10,
+        squiggleY: 10
       }
     },
     line: {
